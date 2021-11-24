@@ -25,19 +25,21 @@ import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
+import static java.awt.Font.ITALIC;
+
 
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener
 {
     private static final String GREETINGS = "Welcome to:";
     private static final String GAME_TITLE = "Brick Destroy";
-    private static final String CREDITS = "Version 0.1";
+    private static final String CREDITS = "Version 2.0";
     private static final String START_TEXT = "Start";
     private static final String MENU_TEXT = "Exit";
 
-    private static final Color BG_COLOR = new Color(132, 19, 91);
+    private static final Color BG_COLOR = new Color(43, 140, 168);
     private static final Color BORDER_COLOR = new Color(0, 0, 0);//black
-    private static final Color DASH_BORDER_COLOR = new  Color(255, 216, 0);//school bus yellow
-    private static final Color TEXT_COLOR = new Color(220, 250, 4);//Lemon Yellow
+    private static final Color DASH_BORDER_COLOR = new  Color(255, 228, 0);//school bus yellow
+    private static final Color TEXT_COLOR = new Color(0, 0, 0);//Lemon Yellow
     private static final Color CLICKED_BUTTON_COLOR = BG_COLOR.brighter();
     private static final Color CLICKED_TEXT = Color.YELLOW;
     private static final int BORDER_SIZE = 5;
@@ -84,10 +86,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         borderStoke = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND,0,DASHES,0);
         borderStoke_noDashes = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
 
-        greetingsFont = new Font("Noto Mono",Font.PLAIN,25);
-        gameTitleFont = new Font("Noto Mono",Font.BOLD,40);
-        creditsFont = new Font("Monospaced",Font.PLAIN,10);
-        buttonFont = new Font("Monospaced",Font.PLAIN,startButton.height-2);
+        greetingsFont = new Font("Arial Rounded MT Bold",Font.PLAIN,25);
+        gameTitleFont = new Font("Arial Rounded MT Bold",Font.BOLD,40);
+        creditsFont = new Font("Consolas",Font.PLAIN,10);
+        buttonFont = new Font("Consolas",Font.PLAIN,startButton.height-2);
 
 
 

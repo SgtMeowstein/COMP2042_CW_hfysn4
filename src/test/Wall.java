@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class Wall {
 
-    private static final int LEVELS_COUNT = 4;
+    private static final int LEVELS_COUNT = 8;
 
     private static final int CLAY = 1;
     private static final int STEEL = 2;
@@ -167,9 +167,13 @@ public class Wall {
     private Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
         Brick[][] tmp = new Brick[LEVELS_COUNT][];
         tmp[0] = makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY);
-        tmp[1] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CEMENT);
-        tmp[2] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
+        tmp[1] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CLAY);
+        tmp[2] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CEMENT,CEMENT);
         tmp[3] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
+        tmp[4] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
+        tmp[5] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CEMENT);
+        tmp[6] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CEMENT,STEEL);
+        tmp[7] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,STEEL);
         return tmp;
     }
 
