@@ -126,12 +126,13 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.translate(-x,-y);
         g2d.setFont(prevFont);
         g2d.setColor(prevColor);
+
     }
 
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
 
-        g2d.setColor(BG_COLOR);
+
         g2d.fill(menuFace);
 
         Stroke tmp = g2d.getStroke();
@@ -147,6 +148,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setStroke(tmp);
 
         g2d.setColor(prev);
+
+        //the bg image
+        Image picture = Toolkit.getDefaultToolkit().getImage("brick2.jpg");
+        g2d.drawImage(picture, 0, 0, this);
     }
 
     private void drawText(Graphics2D g2d){
