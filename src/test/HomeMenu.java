@@ -36,12 +36,13 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private static final String START_TEXT = "Start";
     private static final String MENU_TEXT = "Exit";
 
-    private static final Color BG_COLOR = new Color(43, 140, 168);
+    private static final Color BG_COLOR = new Color(0, 0, 0);
     private static final Color BORDER_COLOR = new Color(0, 0, 0);//black
     private static final Color DASH_BORDER_COLOR = new  Color(255, 228, 0);//school bus yellow
-    private static final Color TEXT_COLOR = new Color(0, 0, 0);//Lemon Yellow
-    private static final Color CLICKED_BUTTON_COLOR = BG_COLOR.brighter();
-    private static final Color CLICKED_TEXT = Color.YELLOW;
+    private static final Color TEXT_COLOR = new Color(255, 255, 255);//Lemon Yellow
+    private static final Color BUTTON_COLOR = new Color(0, 0, 0);
+    private static final Color CLICKED_BUTTON_COLOR = new Color(0, 0, 0);
+    private static final Color CLICKED_TEXT = Color.BLACK;
     private static final int BORDER_SIZE = 5;
     private static final float[] DASHES = {12,6};
 
@@ -194,6 +195,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         Rectangle2D txtRect = buttonFont.getStringBounds(START_TEXT,frc);
         Rectangle2D mTxtRect = buttonFont.getStringBounds(MENU_TEXT,frc);
 
+
         g2d.setFont(buttonFont);
 
         int x = (menuFace.width - startButton.width) / 2;
@@ -208,11 +210,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         y += startButton.y + (startButton.height * 0.9);
 
 
-
-
         if(startClicked){
             Color tmp = g2d.getColor();
-            g2d.setColor(CLICKED_BUTTON_COLOR);
+            g2d.setColor(BUTTON_COLOR);
             g2d.draw(startButton);
             g2d.setColor(CLICKED_TEXT);
             g2d.drawString(START_TEXT,x,y);
