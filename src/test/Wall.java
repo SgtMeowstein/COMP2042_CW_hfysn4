@@ -41,6 +41,7 @@ public class Wall {
     private int level;
 
     private Point startPoint;
+    private int score;
     private int brickCount;
     private int ballCount;
     private boolean ballLost;
@@ -210,17 +211,21 @@ public class Wall {
                 //Vertical Impact
                 case Brick.UP_IMPACT:
                     ball.reverseY();
+                    score+=100;
                     return b.setImpact(ball.down, Crack.UP);
                 case Brick.DOWN_IMPACT:
                     ball.reverseY();
+                    score+=100;
                     return b.setImpact(ball.up, Crack.DOWN);
 
                 //Horizontal Impact
                 case Brick.LEFT_IMPACT:
                     ball.reverseX();
+                    score+=100;
                     return b.setImpact(ball.right, Crack.RIGHT);
                 case Brick.RIGHT_IMPACT:
                     ball.reverseX();
+                    score+=100;
                     return b.setImpact(ball.left, Crack.LEFT);
             }
         }
@@ -239,6 +244,9 @@ public class Wall {
     public int getBallCount(){
         return ballCount;
     }
+
+    public int getScore(){return score;}
+    public void setScore(int num){score=num;}
 
     public boolean isBallLost(){
         return ballLost;
