@@ -145,12 +145,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
     private void clear(Graphics2D g2d){
-        Color tmp = g2d.getColor();
-        g2d.setColor(BG_COLOR);
-        Image picture = Toolkit.getDefaultToolkit().getImage("stars.jpg");
-        g2d.drawImage(picture, 0, 0, this);
         g2d.fillRect(0,0,getWidth(),getHeight());
-        g2d.setColor(tmp);
+        Image picture = Toolkit.getDefaultToolkit().getImage("star.jpg");
+        g2d.drawImage(picture, 0, 0, this);
+
     }
 
     private void drawBrick(Brick brick,Graphics2D g2d){
