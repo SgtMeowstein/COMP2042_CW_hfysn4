@@ -30,13 +30,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private static final String RESTART = "Restart";
     private static final String EXIT = "Exit";
     private static final String PAUSE = "Pause Menu";
+    private static final String INFO = "Tutorial";
     private static final int TEXT_SIZE = 30;
     private static final Color MENU_COLOR = new Color(255, 255, 255);
 
 
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
-
     private static final Color BG_COLOR = Color.BLACK;
 
     private Timer gameTimer;
@@ -52,6 +52,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle continueButtonRect;
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
+    private Rectangle Scoreboard;
     private int strLen;
 
     private DebugConsole debugConsole;
@@ -146,6 +147,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private void clear(Graphics2D g2d){
         Color tmp = g2d.getColor();
         g2d.setColor(BG_COLOR);
+        Image picture = Toolkit.getDefaultToolkit().getImage("stars.jpg");
+        g2d.drawImage(picture, 0, 0, this);
         g2d.fillRect(0,0,getWidth(),getHeight());
         g2d.setColor(tmp);
     }
@@ -262,6 +265,14 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         g2d.setFont(tmpFont);
         g2d.setColor(tmpColor);
+    }
+    private void scoreboard(){
+        message = String.format("Player Score: %d",wall.getScore());
+
+    }
+    private void drawInfo(Graphics2D g2d){
+
+
     }
 
     @Override
