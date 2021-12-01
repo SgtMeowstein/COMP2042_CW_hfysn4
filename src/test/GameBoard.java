@@ -37,7 +37,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
-    private static final Color BG_COLOR = Color.BLACK;
 
     private Timer gameTimer;
 
@@ -56,6 +55,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private int strLen;
 
     private DebugConsole debugConsole;
+    private GameFrame owner;
 
 
     public GameBoard(JFrame owner){
@@ -146,7 +146,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private void clear(Graphics2D g2d){
         g2d.fillRect(0,0,getWidth(),getHeight());
-        Image picture = Toolkit.getDefaultToolkit().getImage("star.jpg");
+        Image picture = Toolkit.getDefaultToolkit().getImage("sky.jpg");
         g2d.drawImage(picture, 0, 0, this);
 
     }
@@ -260,16 +260,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.drawString(EXIT,x,y);
 
 
-
         g2d.setFont(tmpFont);
         g2d.setColor(tmpColor);
     }
     private void scoreboard(){
         message = String.format("Player Score: %d",wall.getScore());
-
-    }
-    private void drawInfo(Graphics2D g2d){
-
 
     }
 
@@ -328,6 +323,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             repaint();
         }
         else if(exitButtonRect.contains(p)){
+            System.out.println("Goodbye " + System.getProperty("user.name"));
             System.exit(0);
         }
 
@@ -374,7 +370,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     public void onLostFocus(){
         gameTimer.stop();
-        message = "Focus Lost";
         repaint();
     }
 

@@ -96,7 +96,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         greetingsFont = new Font("Arial Rounded MT Bold",Font.PLAIN,25);
         gameTitleFont = new Font("Arial Rounded MT Bold",Font.BOLD,40);
         creditsFont = new Font("Consolas",Font.PLAIN,10);
-        buttonFont = new Font("Consolas",Font.PLAIN,startButton.height-2);
+        buttonFont = new Font("Arial Rounded MT Bold",Font.PLAIN,startButton.height-2);
 
 
 
@@ -290,6 +290,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         if(startButton.contains(p)){
            owner.enableGameBoard();
 
+        }
+        else if (infoButton.contains(p)){
+            owner.enableInfoScreen();
         }
         else if(exitButton.contains(p)){
             System.out.println("Goodbye " + System.getProperty("user.name"));

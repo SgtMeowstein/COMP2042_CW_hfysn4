@@ -27,8 +27,7 @@ public class Player {
 
 
     public static final Color BORDER_COLOR = new Color(0, 0, 0, 255);
-    public static final Color INNER_COLOR = new Color(194, 71, 112, 255);
-
+    public static final Color INNER_COLOR = new Color(128, 107, 175, 255);
     private static final int DEF_MOVE_AMOUNT = 5;
 
     private Rectangle playerFace;

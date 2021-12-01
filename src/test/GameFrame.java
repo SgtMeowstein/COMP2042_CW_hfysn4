@@ -28,9 +28,11 @@ import java.awt.event.WindowListener;
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     private static final String DEF_TITLE = "Brick Destroy";
+    private final InfoPage infoPage;
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
+
 
     private boolean gaming;
 
@@ -44,6 +46,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gameBoard = new GameBoard(this);
 
         homeMenu = new HomeMenu(this,new Dimension(450,300));
+
+
+        infoPage = new InfoPage(this, new Dimension(450, 300));
 
         this.add(homeMenu,BorderLayout.CENTER);
 
@@ -70,7 +75,26 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+    public void enableInfoScreen(){
+        this.dispose();
+        this.remove(homeMenu);
+        this.add(infoPage,BorderLayout.CENTER);
+        this.setUndecorated(false);
+        initialize();
+        /*to avoid problems with graphics focus controller is added here*/
+        this.addWindowFocusListener(this);
 
+    }
+    public void enableHomeMenu(){
+        this.dispose();
+        this.remove(infoPage);
+        this.add(homeMenu,BorderLayout.CENTER);
+        this.setUndecorated(false);
+        initialize();
+        /*to avoid problems with graphics focus controller is added here*/
+        this.addWindowFocusListener(this);
+
+    }
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (size.width - this.getWidth()) / 2;
