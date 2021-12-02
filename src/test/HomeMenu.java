@@ -29,10 +29,10 @@ import java.awt.geom.Rectangle2D;
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener
 {
     private static final String GREETINGS = "Welcome to:";
-    private static final String GAME_TITLE = "Brick Destroy";
+    private static final String GAME_TITLE = "Brick Destroy Master";
     private static final String CREDITS = "Version 2.0";
     private static final String START_TEXT = "Start";
-    private static final String INFO_TEXT = "Info";
+    private static final String INFO_TEXT = "Instructions";
     private static final String EXIT_TEXT = "Exit";
 
 

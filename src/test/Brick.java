@@ -9,6 +9,7 @@ import java.util.Random;
  * Created by filippo on 04/09/16.
  *
  */
+//class for brick
 abstract public class Brick  {
 
     public static final int MIN_CRACK = 1;
@@ -39,7 +40,7 @@ abstract public class Brick  {
 
     private boolean broken;
 
-
+//method for the brick
     public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         rnd = new Random();
         broken = false;
@@ -53,6 +54,7 @@ abstract public class Brick  {
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
+//method when the ball hit brick
     public  boolean setImpact(Point2D point , int dir){
         if(broken)
             return false;
@@ -60,19 +62,20 @@ abstract public class Brick  {
         return  broken;
     }
 
+//method for the shape of the brick
     public abstract Shape getBrick();
 
 
-
+//method to colour the border of the brick
     public Color getBorderColor(){
         return  border;
     }
-
+//method to colour the inner border of the brick
     public Color getInnerColor(){
         return inner;
     }
 
-
+//method what happends when the ball hits the brick and it cracks
     public final int findImpact(Ball b){
         if(broken)
             return 0;
@@ -87,10 +90,11 @@ abstract public class Brick  {
             out = UP_IMPACT;
         return out;
     }
-
+//when the brick is broken
     public final boolean isBroken(){
         return broken;
     }
+
 
     public void repair() {
         broken = false;
