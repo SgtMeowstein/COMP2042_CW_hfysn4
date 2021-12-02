@@ -107,7 +107,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         drawMenu((Graphics2D)g);
     }
 
-
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
