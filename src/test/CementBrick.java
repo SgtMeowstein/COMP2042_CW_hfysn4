@@ -13,7 +13,7 @@ public class CementBrick extends Brick {
     private static final Color DEF_BORDER = new Color(217, 199, 175);
     private static final int CEMENT_STRENGTH = 2;
 
-//variable for the crack on the brick and the shpe of the brick
+//variable for the crack on the brick and the shape of the brick
     private Crack crack;
     private Shape brickFace;
 
@@ -29,7 +29,8 @@ public class CementBrick extends Brick {
     protected Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos,size);
     }
-/*a subclass that provide a specific implementation of makeBrickFace that is already in Brick*/
+
+/*a subclass that provide a specific implementation of setImpact that is already in Brick*/
     @Override
     public boolean setImpact(Point2D point, int dir) {
         if(super.isBroken())
@@ -43,7 +44,7 @@ public class CementBrick extends Brick {
         return true;
     }
 
-/*a subclass that provide a specific implementation of makeBrickFace that is already in Brick*/
+/*a subclass that provide a specific implementation of getBrick that is already in Brick*/
     @Override
     public Shape getBrick() {
         return brickFace;
@@ -57,6 +58,7 @@ public class CementBrick extends Brick {
         }
     }
 
+/*a method to reset the bricks when the game restarts*/
     public void repair(){
         super.repair();
         crack.reset();

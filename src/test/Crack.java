@@ -4,11 +4,14 @@ import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
+//class to make the crack on the cement brick
 public class Crack {
 
+//the amount of cracks on the cement brick for it to break
     private static final int CRACK_SECTIONS = 3;
     private static final double JUMP_PROBABILITY = 0.7;
 
+//the direction of the crack on the cement brick
     public static final int LEFT = 10;
     public static final int RIGHT = 20;
     public static final int UP = 30;
@@ -16,14 +19,14 @@ public class Crack {
     public static final int VERTICAL = 100;
     public static final int HORIZONTAL = 200;
 
-
+//variables for the bricks
     private final Brick brick;
     private GeneralPath crack;
 
     private int crackDepth;
     private int steps;
 
-
+//method for the crack
     public Crack(Brick brick, int crackDepth, int steps) {
         this.brick = brick;
 
@@ -43,6 +46,7 @@ public class Crack {
         crack.reset();
     }
 
+//method to make the crack appear in specific sides on the brick
     protected void makeCrack(Point2D point, int direction) {
         Rectangle bounds = brick.brickFace.getBounds();
 
@@ -82,7 +86,7 @@ public class Crack {
 
         }
     }
-
+//how the crack will appear
     protected void makeCrack(Point start, Point end) {
 
         GeneralPath path = new GeneralPath();
@@ -114,11 +118,13 @@ public class Crack {
         crack.append(path, true);
     }
 
+//
     private int randomInBounds(int bound) {
         int n = (bound * 2) + 1;
         return Brick.getRnd().nextInt(n) - bound;
     }
 
+//when the ball hits in the middle
     private boolean inMiddle(int i, int steps, int divisions) {
         int low = (steps / divisions);
         int up = low * (divisions - 1);
@@ -126,6 +132,7 @@ public class Crack {
         return (i > low) && (i < up);
     }
 
+//
     private int jumps(int bound, double probability) {
 
         if (Brick.getRnd().nextDouble() > probability)
