@@ -22,7 +22,11 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 
+/**
+ *
+ */
 public class SteelBrick extends Brick {
+
 
     private static final String NAME = "Steel Brick";
     private static final Color DEF_INNER = new Color(202, 204, 206);

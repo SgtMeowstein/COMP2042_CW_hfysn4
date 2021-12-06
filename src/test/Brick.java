@@ -5,9 +5,11 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-/**
- * Created by filippo on 04/09/16.
- *
+
+/** represents the brick class
+ * @author Siti Khadijah
+ * @version 2.0
+ * @since 1.0
  */
 //class for brick
 abstract public class Brick  {
@@ -23,6 +25,9 @@ abstract public class Brick  {
     public static final int RIGHT_IMPACT = 400;
 
 
+    /** Make the ball hit in random
+     * @return A random returns
+     */
     public static Random getRnd() {
         return rnd;
     }
@@ -40,6 +45,14 @@ abstract public class Brick  {
 
     private boolean broken;
 
+    /** Sets the bricks Position, colour and size
+     * @param name Type of bricks
+     * @param pos the position of the bricks
+     * @param size size of the bricks
+     * @param border the border colour for the bricks
+     * @param inner the inner colour for the bricks
+     * @param strength the strength of the bricks
+     */
 //method for the brick
     public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         rnd = new Random();
@@ -52,8 +65,18 @@ abstract public class Brick  {
 
     }
 
+    /** Size and shape of the brick
+     * @param pos position of the bricks
+     * @param size size of the bricks
+     * @return Shape returns the position and size of the bricks
+     */
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
+    /**
+     * @param point if the ball hits the brick in a certain point it will break
+     * @param dir the direction of the ball hitting the brick
+     * @return if the brick is broken it will be 0
+     */
 //method when the ball hit brick
     public  boolean setImpact(Point2D point , int dir){
         if(broken)
@@ -62,20 +85,34 @@ abstract public class Brick  {
         return  broken;
     }
 
+    /** Sets the shape for the bricks
+     * @return the shape of the brick
+     */
 //method for the shape of the brick
     public abstract Shape getBrick();
 
 
+    /** Set the colour for border part the Bricks
+     * @return A color represents the border colour for the bricks
+     */
 //method to colour the border of the brick
     public Color getBorderColor(){
         return  border;
     }
+
+    /** Set the colour for the inner part of bricks
+     * @return A color represents the inner colour for the bricks
+     */
 //method to colour the inner border of the brick
     public Color getInnerColor(){
         return inner;
     }
 
-//method what happends when the ball hits the brick and it cracks
+    /**  Represents which direction will give an impact to the brick when the ball hits
+     * @param b when the ball hits the brick
+     * @return the broken bricks will be gone
+     */
+//method what happens when the ball hits the brick and it cracks
     public final int findImpact(Ball b){
         if(broken)
             return 0;
@@ -90,17 +127,27 @@ abstract public class Brick  {
             out = UP_IMPACT;
         return out;
     }
+
+    /** Represents the broken bricks
+     * @return boolean represents the broken bricks
+     */
 //when the brick is broken
     public final boolean isBroken(){
         return broken;
     }
 
 
+    /** When the game restarts the strength will go back to
+     *
+     */
     public void repair() {
         broken = false;
         strength = fullStrength;
     }
 
+    /**
+     *
+     */
     public void impact(){
         strength--;
         broken = (strength == 0);
