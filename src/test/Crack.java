@@ -4,11 +4,21 @@ import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
+/** Represents the Crack class for Cement Brick
+ * @author Siti Khadijah
+ * @version 2.0
+ * @since 1.0
+ */
 //class to make the crack on the cement brick
 public class Crack {
 
 //the amount of cracks on the cement brick for it to break
+    /** the maximum amount of Cracks on the brick
+     */
     private static final int CRACK_SECTIONS = 3;
+
+    /** how far the ball will bounce back after hitting the cement brick
+     */
     private static final double JUMP_PROBABILITY = 0.7;
 
 //the direction of the crack on the cement brick
@@ -20,12 +30,24 @@ public class Crack {
     public static final int HORIZONTAL = 200;
 
 //variables for the bricks
+    /** to call brick
+     */
     private final Brick brick;
+
+    /** create the lines for the crack
+     */
     private GeneralPath crack;
 
+    /** how deep is the crack
+     */
     private int crackDepth;
     private int steps;
 
+    /** represent the crack on the brick
+     * @param brick the type of bricks
+     * @param crackDepth how many times it will crack
+     * @param steps how many steps it takes for it crack
+     */
 //method for the crack
     public Crack(Brick brick, int crackDepth, int steps) {
         this.brick = brick;
@@ -37,15 +59,24 @@ public class Crack {
     }
 
 
+    /** Controls the line of the crack
+     * @return will call back the crack method
+     */
     public GeneralPath draw() {
 
         return crack;
     }
 
+    /** When the game restarts it will reset
+     */
     public void reset() {
         crack.reset();
     }
 
+    /** Create the crack on the brick
+     * @param point The point where the crack will appear
+     * @param direction The direction where the crack will appear
+     */
 //method to make the crack appear in specific sides on the brick
     protected void makeCrack(Point2D point, int direction) {
         Rectangle bounds = brick.brickFace.getBounds();
@@ -86,6 +117,11 @@ public class Crack {
 
         }
     }
+
+    /** This control the how the crack will appear
+     * @param start when the crack will appear
+     * @param end the max length of the crack
+     */
 //how the crack will appear
     protected void makeCrack(Point start, Point end) {
 
@@ -118,12 +154,22 @@ public class Crack {
         crack.append(path, true);
     }
 
+    /** this control when the crack appear when the ball hits it randomly
+     * @param bound when the ball hits the brick
+     * @return return the Brick
+     */
 //
     private int randomInBounds(int bound) {
         int n = (bound * 2) + 1;
         return Brick.getRnd().nextInt(n) - bound;
     }
 
+    /** When the ball hits in them middle
+     * @param i
+     * @param steps
+     * @param divisions
+     * @return
+     */
 //when the ball hits in the middle
     private boolean inMiddle(int i, int steps, int divisions) {
         int low = (steps / divisions);
@@ -132,6 +178,11 @@ public class Crack {
         return (i > low) && (i < up);
     }
 
+    /** When the ball will jump back after hitting the brick
+     * @param bound will be the cause of the ball to bounce back
+     * @param probability the probability of it happening
+     * @return will return the value of the random bounce back
+     */
 //
     private int jumps(int bound, double probability) {
 
@@ -141,6 +192,12 @@ public class Crack {
 
     }
 
+    /** Creates the crack line at random places on the brick
+     * @param from Where the line of crack will start
+     * @param to how far it will stretch
+     * @param direction the direction of the crack pointing
+     * @return it will stop after it has reached its max number of crack
+     */
     private Point makeRandomPoint(Point from, Point to, int direction) {
 
         Point out = new Point();

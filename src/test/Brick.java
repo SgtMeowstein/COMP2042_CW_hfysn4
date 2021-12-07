@@ -14,14 +14,33 @@ import java.util.Random;
 //class for brick
 abstract public class Brick  {
 
+    /** The variables for the minimum crack on the Cement Brick
+     */
     public static final int MIN_CRACK = 1;
+
+    /** The variables for the depth of the crack
+     */
     public static final int DEF_CRACK_DEPTH = 1;
+
+    /** The variable for amount of bricks
+     */
     public static final int DEF_STEPS = 35;
 
 
+    /** The variable and value for the impact of the ball to the brick from above
+     */
     public static final int UP_IMPACT = 100;
+
+    /** The variable and value for the impact of the ball to the brick from below
+     */
     public static final int DOWN_IMPACT = 200;
+
+    /** The variable and value for the impact of the ball to the brick from the left
+     */
     public static final int LEFT_IMPACT = 300;
+
+    /** The variable and value for the impact of the ball to the brick from right
+     */
     public static final int RIGHT_IMPACT = 400;
 
 
@@ -32,17 +51,33 @@ abstract public class Brick  {
         return rnd;
     }
 
+    /** Variable for the Random function
+     */
     private static Random rnd;
 
+    /** String for the name of the Bricks
+     */
     private String name;
     Shape brickFace;
 
+    /** Color for the borders of the bricks
+     */
     private Color border;
+
+    /** Color for the inner part of the bricks
+     */
     private Color inner;
 
+    /** the maximum strength when the ball hits the brick
+     */
     private int fullStrength;
+
+    /** strength of the brick
+     */
     private int strength;
 
+    /** to check if the brick is broken or not
+     */
     private boolean broken;
 
     /** Sets the bricks Position, colour and size

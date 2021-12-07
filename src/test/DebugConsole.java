@@ -23,18 +23,41 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 
+
+/** Represents the DebugConsole class
+ * @author Siti Khadijah Binti Norzafri
+ * @version 2.0
+ * @since 1.0
+ *
+ */
 public class DebugConsole extends JDialog implements WindowListener{
 
 //
     private static final String TITLE = "Debug Console";
 
 
+    /** the variable for the JFrame
+     */
     private JFrame owner;
+
+    /** the variable for the DebugPanel
+     */
     private DebugPanel debugPanel;
+
+    /** the variable for the gameBoard
+     */
     private GameBoard gameBoard;
+
+    /** the variable for the wall
+     */
     private Wall wall;
 
 
+    /** Represent the DebugConsole where error message will be seen
+     * @param owner when owner is called it Game frame will appear
+     * @param wall will call the wall
+     * @param gameBoard will spawn the gameBoard
+     */
     public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
 
         this.wall = wall;
@@ -49,6 +72,8 @@ public class DebugConsole extends JDialog implements WindowListener{
         this.pack();
     }
 
+    /**Represents the the interface of the DebugConsole
+     */
     private void initialize(){
         this.setModal(true);
         this.setTitle(TITLE);
@@ -59,6 +84,8 @@ public class DebugConsole extends JDialog implements WindowListener{
     }
 
 
+    /** Where the Debug Console will appear
+     */
     private void setLocation(){
         int x = ((owner.getWidth() - this.getWidth()) / 2) + owner.getX();
         int y = ((owner.getHeight() - this.getHeight()) / 2) + owner.getY();
@@ -66,16 +93,25 @@ public class DebugConsole extends JDialog implements WindowListener{
     }
 
 
+    /** Represent the windowEvent
+     * @param windowEvent the action of the window
+     */
     @Override
     public void windowOpened(WindowEvent windowEvent) {
 
     }
 
+    /** When the Debug Console is closing
+     * @param windowEvent the action of the window
+     */
     @Override
     public void windowClosing(WindowEvent windowEvent) {
         gameBoard.repaint();
     }
 
+    /** When the Debug Console is Closed
+     * @param windowEvent the action of the window
+     */
     @Override
     public void windowClosed(WindowEvent windowEvent) {
 
@@ -91,6 +127,9 @@ public class DebugConsole extends JDialog implements WindowListener{
 
     }
 
+    /** When Debug Console is activated
+     * @param windowEvent the action of the window
+     */
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
@@ -98,6 +137,9 @@ public class DebugConsole extends JDialog implements WindowListener{
         debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 
+    /** When Debug Console is deactivated
+     * @param windowEvent the action of the window
+     */
     @Override
     public void windowDeactivated(WindowEvent windowEvent) {
 

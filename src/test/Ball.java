@@ -40,10 +40,12 @@ abstract public class Ball {
 //variable for the speed of the ball
     /** Represents the speed of the ball
      * @param speedX The speed of the ball moving horizontal
-     * @param speedY The speed of the ball moving vertical
-     *
      */
     private int speedX;
+
+    /** Represents the speed of the ball
+     * @param speedY The speed of the ball moving vertical
+     */
     private int speedY;
 
     //method for the ball position on the player
@@ -112,44 +114,63 @@ abstract public class Ball {
         speedY = y;
     }
 
-    /** Represents the speed of the ball moving ho
-     * @param s
+    /** Represents the speed of the ball moving horizontally
+     * @param s controls the speed of the ball moving horizontally
      */
     //method to set the speed of the ball moving horizontal
     public void setXSpeed(int s){
         speedX = s;
     }
 
+    /** Represents the speed of the ball moving vertically
+     * @param s controls the speed of the ball moving vertically
+     */
     //method to set up the speed of the ball moving vertical direction
     public void setYSpeed(int s){
         speedY = s;
     }
 
+    /** Represents the speed of the ball when it bounce back horizontally
+     */
     //method to set up the ball to bounce back in a horizontal direction
     public void reverseX(){
         speedX *= -1;
     }
 
+    /** Represents the speed of the ball when it bounce back vertically
+     */
     //method to set up the ball to bounce back in a vertical direction
     public void reverseY(){
         speedY *= -1;
     }
 
+    /** Represents the border colour of the ball
+     * @return  will return the colour of the border for the ball
+     */
     //method to set up the ball border colour
     public Color getBorderColor(){
         return border;
     }
 
+    /** Represents the inner colour of the ball
+     * @return  will return the inner colour of the ball
+     */
     //method to set up the ball inner border colour
     public Color getInnerColor(){
         return inner;
     }
 
+    /** Represents the position of th ball
+     * @return call back the position method for the ball
+     */
     //method to set up the ball position on center
     public Point2D getPosition(){
         return center;
     }
 
+    /** Represents the call back function for the shape for the ball shape
+     * @return  call back the shape of the ball
+     */
     //method to set up the speed of the ball
     public Shape getBallFace(){
         return ballFace;
