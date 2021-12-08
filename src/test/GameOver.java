@@ -320,15 +320,15 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
             owner.enableretry();
 
         }
-        /*else if(boardButton.contains(p)){
+        else if(boardButton.contains(p)){
             owner.enableleaderboard();
 
-        }*/
+        }
         else if(saveButton.contains(p)){
             user = owner.getplayeruser();
             score = owner.getplayerscore();
             username = JOptionPane.showInputDialog("Please Input Name:", "My Name");
-            if (user != null) {
+            if (username != null) {
                 int x;
                 for (x = 0; x < 6; x++) {
                     if (player_score > score[x])

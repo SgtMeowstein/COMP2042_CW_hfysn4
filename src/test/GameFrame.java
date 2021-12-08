@@ -40,8 +40,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private LeaderBoard leaderBoard;
     private int player_score;
     private String username;
-    private String[] user;
-    private int[] score;
+    private String[] user = {"","","","","",""};
+    private int[] score = {0,0,0,0,0,0};
 
     private boolean gaming;
 
@@ -60,7 +60,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
         gameOver = new GameOver(this, new Dimension(450, 300));
 
-        //leaderBoard = new LeaderBoard(this, new Dimension(450, 300));
+        leaderBoard = new LeaderBoard(this, new Dimension(450, 300));
 
 
 
@@ -102,7 +102,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
     public void enableGameOver(){
-
+        ReadFile();
         this.dispose();
         this.remove(gameBoard);
         this.add(gameOver,BorderLayout.CENTER);
@@ -164,7 +164,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     }
 
     public void enableleaderboard(){
-        ReadFile();;
+        ReadFile();
         this.dispose();
         this.remove(gameOver);
         this.add(leaderBoard,BorderLayout.CENTER);
@@ -179,10 +179,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     public void ReadFile(){
         try{
-            File leaderboardScore = new File("src/test/leaderboardscore.txt");
-            File leaderboardName = new File("src/test/leaderboardname.txt");
-            Scanner scanner1 = new Scanner(leaderboardScore);
-            Scanner scanner2 = new Scanner(leaderboardName);
+            File leaderboard = new File("src/leaderboard.txt");
+            File username = new File("src/username.txt");
+            Scanner scanner1 = new Scanner(leaderboard);
+            Scanner scanner2 = new Scanner(username);
             int x =0;
             while (scanner1.hasNextLine()) {
                 score[x]= scanner1.nextInt();
@@ -200,9 +200,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     public void WriteFile(int[] score, String[] name){
         try {
-            System.out.println("Save Succeded");
-            FileWriter leaderboardScore = new FileWriter("src/test/leaderboard.txt",false);
-            FileWriter leaderboardName = new FileWriter("src/test/username.txt",false);
+            System.out.println("Save Succeeded");
+            FileWriter leaderboardScore = new FileWriter("src/leaderboard.txt",false);
+            FileWriter leaderboardName = new FileWriter("src/username.txt",false);
             int x=0;
             while (x<5) {
                 leaderboardScore.write(String.format("%d\n", score[x]));
