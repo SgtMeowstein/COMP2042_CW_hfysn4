@@ -44,6 +44,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private String message;
 
+    private GameFrame owner;
+
     private boolean showPauseMenu;
 
     private Font menuFont;
@@ -55,12 +57,12 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private int strLen;
 
     private DebugConsole debugConsole;
-    private GameFrame owner;
 
 
-    public GameBoard(JFrame owner){
+    public GameBoard(GameFrame owner){
         super();
 
+        this.owner = owner;
         strLen = 0;
         showPauseMenu = false;
 
@@ -84,7 +86,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             if(wall.isBallLost()){
                 if(wall.ballEnd()){
                     wall.wallReset();
-                    message = String.format("Game Over \n Player Score: %d", wall.getScore());
+                    owner.setScore(wall.getScore());
+                    owner.enableGameOver();
                     wall.setScore(0);
                 }
                 wall.ballReset();
@@ -323,8 +326,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             repaint();
         }
         else if(exitButtonRect.contains(p)){
-            System.out.println("Goodbye " + System.getProperty("user.name"));
-            System.exit(0);
+           owner.enableHomeMenu(1);
         }
 
     }

@@ -26,14 +26,11 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
 
-public class InfoPage extends JComponent implements MouseListener, MouseMotionListener
+public class LeaderBoard extends JComponent implements MouseListener, MouseMotionListener
 {
-    private static final String HEADER = "TUTORIAL";
-    private static final String TEXT1 = "1. Press SPACEBAR to make the ball move ";
-    private static final String TEXT2 = "2. Use RIGHT and LEFT button to control the bar";
-    private static final String TEXT3 = "3. Press ESC to pause the game";
-    private static final String TEXT4 = "4. Click RESTART to restart the level";
-    private static final String TEXT5 = "5. Click EXIT to leave the game";
+    private static final String HEADER = "LEADERBOARD";
+    private String[] user;
+    private int[] score;
     private static final String HOME_TEXT = "HOME";
 
 
@@ -69,7 +66,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
 
 
-    public InfoPage(GameFrame owner,Dimension area){
+    public LeaderBoard(GameFrame owner,Dimension area){
 
         this.setFocusable(true);
         this.requestFocusInWindow();
@@ -166,17 +163,14 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     private void drawText(Graphics2D g2d){
 
+        user = owner.getplayeruser();
+        score = owner.getplayerscore();
+
         g2d.setColor(TEXT_COLOR);
 
         FontRenderContext frc = g2d.getFontRenderContext();
 
         Rectangle2D titleRect = titleFont.getStringBounds(HEADER,frc);
-        Rectangle2D text1 = textFont.getStringBounds(TEXT1,frc);
-        Rectangle2D text2 = textFont.getStringBounds(TEXT2,frc);
-        Rectangle2D text3 = textFont.getStringBounds(TEXT3,frc);
-        Rectangle2D text4 = textFont.getStringBounds(TEXT4,frc);
-        Rectangle2D text5 = textFont.getStringBounds(TEXT5,frc);
-
 
 
         int sX,sY;
@@ -187,38 +181,19 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         g2d.setFont(titleFont);
         g2d.drawString(HEADER,sX,sY);
 
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 3;
-        sY += (int) titleRect.getHeight() * 1.1;//add 10% of String height between the two strings
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 18;
-        sY += (int) text1.getHeight() * 1.1;
 
-        g2d.setFont(textFont);
-        g2d.drawString(TEXT1,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 18;
-        sY += (int) text2.getHeight() * 1.1;
-
-        g2d.setFont(textFont);
-        g2d.drawString(TEXT2,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 18;
-        sY += (int) text3.getHeight() * 1.1;
-
-        g2d.setFont(textFont);
-        g2d.drawString(TEXT3,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 18;
-        sY += (int) text4.getHeight() * 1.1;
-
-        g2d.setFont(textFont);
-        g2d.drawString(TEXT4,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 18;
-        sY += (int) text5.getHeight() * 1.1;
-
-        g2d.setFont(textFont);
-        g2d.drawString(TEXT5,sX,sY);
-
+        for (int x=0; x<5; x++) {
+            sX = 80;
+            sY += 20;
+            g2d.setFont(titleFont);
+            g2d.drawString(String.format("%d",x+1), sX, sY);
+            sX += 30;
+            g2d.setFont(titleFont);
+            g2d.drawString("| "+user[x], sX, sY);
+            sX += 200;
+            g2d.setFont(titleFont);
+            g2d.drawString(String.format("| %d",score[x]), sX, sY);
+        }
 
 
 
@@ -267,7 +242,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
         if(homeButton.contains(p)){
-            owner.enableHomeMenu(3);
+            owner.enableHomeMenu(4);
 
         } else{
             return;
@@ -294,7 +269,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
             homeClicked = false;
             repaint(homeButton.x,homeButton.y,homeButton.width+1,homeButton.height+1);
         }else{
-           return;
+            return;
         }
     }
 

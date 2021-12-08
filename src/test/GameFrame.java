@@ -23,7 +23,11 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class GameFrame extends JFrame implements WindowFocusListener {
 
@@ -32,7 +36,12 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
-
+    private GameOver gameOver;
+    private LeaderBoard leaderBoard;
+    private int player_score;
+    private String username;
+    private String[] user;
+    private int[] score;
 
     private boolean gaming;
 
@@ -47,8 +56,13 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
         homeMenu = new HomeMenu(this,new Dimension(450,300));
 
-
         infoPage = new InfoPage(this, new Dimension(450, 300));
+
+        gameOver = new GameOver(this, new Dimension(450, 300));
+
+        //leaderBoard = new LeaderBoard(this, new Dimension(450, 300));
+
+
 
         this.add(homeMenu,BorderLayout.CENTER);
 
@@ -56,6 +70,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
 
     }
+    public int getScore(){return player_score;}
+    public void setScore(int score){this.player_score = score;}
 
     public void initialize(){
         this.setTitle(DEF_TITLE);
@@ -85,15 +101,123 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
-    public void enableHomeMenu(){
+    public void enableGameOver(){
+
         this.dispose();
-        this.remove(infoPage);
-        this.add(homeMenu,BorderLayout.CENTER);
+        this.remove(gameBoard);
+        this.add(gameOver,BorderLayout.CENTER);
+        this.setUndecorated(true);
+        initialize();
+        /*to avoid problems with graphics focus controller is added here*/
+        this.addWindowFocusListener(this);
+
+    }
+    public void enableHomeMenu(int from){
+        if(from==1) {
+            this.dispose();
+            this.remove(gameBoard);
+            this.add(homeMenu, BorderLayout.CENTER);
+            this.setUndecorated(false);
+            initialize();
+            /*to avoid problems with graphics focus controller is added here*/
+            this.addWindowFocusListener(this);
+        }
+        else if (from==2){
+            this.dispose();
+            this.remove(gameOver);
+            this.add(homeMenu, BorderLayout.CENTER);
+            this.setUndecorated(false);
+            initialize();
+            /*to avoid problems with graphics focus controller is added here*/
+            this.addWindowFocusListener(this);
+        }
+        else if(from==3){
+            this.dispose();
+            this.remove(infoPage);
+            this.add(homeMenu, BorderLayout.CENTER);
+            this.setUndecorated(false);
+            initialize();
+            /*to avoid problems with graphics focus controller is added here*/
+            this.addWindowFocusListener(this);
+        }
+        else if(from==4){
+            this.dispose();
+            this.remove(leaderBoard);
+            this.add(homeMenu, BorderLayout.CENTER);
+            this.setUndecorated(false);
+            initialize();
+            /*to avoid problems with graphics focus controller is added here*/
+            this.addWindowFocusListener(this);
+        }
+
+    }
+
+    public void enableretry(){
+        this.dispose();
+        this.remove(gameOver);
+        this.add(gameBoard,BorderLayout.CENTER);
         this.setUndecorated(false);
         initialize();
         /*to avoid problems with graphics focus controller is added here*/
         this.addWindowFocusListener(this);
 
+    }
+
+    public void enableleaderboard(){
+        ReadFile();;
+        this.dispose();
+        this.remove(gameOver);
+        this.add(leaderBoard,BorderLayout.CENTER);
+        this.setUndecorated(false);
+        initialize();
+
+        this.addWindowFocusListener(this);
+
+    }
+    public int[] getplayerscore(){return score;}
+    public String[] getplayeruser(){return user;}
+
+    public void ReadFile(){
+        try{
+            File leaderboardScore = new File("src/test/leaderboardscore.txt");
+            File leaderboardName = new File("src/test/leaderboardname.txt");
+            Scanner scanner1 = new Scanner(leaderboardScore);
+            Scanner scanner2 = new Scanner(leaderboardName);
+            int x =0;
+            while (scanner1.hasNextLine()) {
+                score[x]= scanner1.nextInt();
+                user[x++]= scanner2.nextLine();
+            }
+            scanner1.close();
+            scanner2.close();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("txt files failed to open");
+            e.printStackTrace();
+        }
+    }
+
+    public void WriteFile(int[] score, String[] name){
+        try {
+            System.out.println("Save Succeded");
+            FileWriter leaderboardScore = new FileWriter("src/test/leaderboard.txt",false);
+            FileWriter leaderboardName = new FileWriter("src/test/username.txt",false);
+            int x=0;
+            while (x<5) {
+                leaderboardScore.write(String.format("%d\n", score[x]));
+                leaderboardName.write(String.format("%s\n", name[x++]));
+            }
+            leaderboardScore.write(String.format("%d", score[5]));
+            leaderboardName.write(String.format("%s", name[5]));
+            leaderboardScore.close();
+            leaderboardName.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("An error occured");
+            e.printStackTrace();
+        }
     }
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
