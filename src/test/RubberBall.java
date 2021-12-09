@@ -21,19 +21,42 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
+/** Represents the rubberball class
+ * @author Siti Khadijah Binti Norzafri
+ * @version 2.0
+ * @since 1.0
+ *
+ */
 public class RubberBall extends Ball {
 
 
+    /** to define the radius of the rubber ball
+     */
     private static final int DEF_RADIUS = 10;
+
+    /** define the inner colour of the rubber ball
+     */
     private static final Color DEF_INNER_COLOR = new Color(212, 227, 0);
+
+    /** define the border colour of the rubber ball
+     */
     private static final Color DEF_BORDER_COLOR = DEF_INNER_COLOR.darker().darker();
 
 
+    /** to position the ball
+     * @param center to center the ball
+     */
     public RubberBall(Point2D center){
         super(center,DEF_RADIUS,DEF_RADIUS,DEF_INNER_COLOR,DEF_BORDER_COLOR);
     }
 
 
+    /** to shape the ball
+     * @param center  The direction of the ball
+     * @param radiusA The radius of the ball
+     * @param radiusB The radius of the ball
+     * @return it will return the radius for the ball
+     */
     @Override
     protected Shape makeBall(Point2D center, int radiusA, int radiusB) {
 

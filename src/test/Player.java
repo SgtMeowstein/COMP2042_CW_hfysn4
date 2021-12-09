@@ -19,15 +19,28 @@
 package test;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 
+/** Represents the player class
+ * @author Siti Khadijah Binti Norzafri
+ * @version 2.0
+ * @since 1.0
+ *
+ */
 public class Player {
 
 
+    /** the border colour for the player rectangle
+     */
     public static final Color BORDER_COLOR = new Color(0, 0, 0, 255);
+
+    /** the inner colour for the player rectangle
+     */
     public static final Color INNER_COLOR = new Color(128, 107, 175, 255);
+
+
+    /** define the movement amount
+     */
     private static final int DEF_MOVE_AMOUNT = 5;
 
     private Rectangle playerFace;
@@ -37,6 +50,12 @@ public class Player {
     private int max;
 
 
+    /** the design for the player
+     * @param ballPoint the position of the ball
+     * @param width the width of the rectangle
+     * @param height the height of the rectangle
+     * @param container the container for the rectangle
+     */
     public Player(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;
         moveAmount = 0;
@@ -46,15 +65,26 @@ public class Player {
 
     }
 
+    /** to design the rectangle
+     * @param width the width of the rectangle
+     * @param height the height of the rectangle
+     * @return will return the rectangle
+     */
     private Rectangle makeRectangle(int width,int height){
         Point p = new Point((int)(ballPoint.getX() - (width / 2)),(int)ballPoint.getY());
         return  new Rectangle(p,new Dimension(width,height));
     }
 
+    /** the impact of the ball when it hits the brick
+     * @param b when the ball hit the brick
+     * @return return the ball to its position
+     */
     public boolean impact(Ball b){
         return playerFace.contains(b.getPosition()) && playerFace.contains(b.down) ;
     }
 
+    /** movement of the player rectangle
+     */
     public void move(){
         double x = ballPoint.getX() + moveAmount;
         if(x < min || x > max)
@@ -63,22 +93,34 @@ public class Player {
         playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
     }
 
+    /** for the player to move left
+     */
     public void moveLeft(){
         moveAmount = -DEF_MOVE_AMOUNT;
     }
 
+    /** for the player to move right
+     */
     public void movRight(){
         moveAmount = DEF_MOVE_AMOUNT;
     }
 
+    /** when the player stop
+     */
     public void stop(){
         moveAmount = 0;
     }
 
+    /** the shape for the player
+     * @return will return the shape of the players rectangle
+     */
     public Shape getPlayerFace(){
         return  playerFace;
     }
 
+    /** for the movement of the player
+     * @param p the movement of the player
+     */
     public void moveTo(Point p){
         ballPoint.setLocation(p);
         playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);

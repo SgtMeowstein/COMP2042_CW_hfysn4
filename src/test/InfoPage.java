@@ -26,26 +26,76 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
 
+/** represents the infopage class
+ * @author Siti Khadijah
+ * @version 2.0
+ * @since 1.0
+ */
 public class InfoPage extends JComponent implements MouseListener, MouseMotionListener
 {
+    /** string to store the header for the game
+     */
     private static final String HEADER = "TUTORIAL";
+
+    /** string to store the text1 for the game
+     */
     private static final String TEXT1 = "1. Press SPACEBAR to make the ball move ";
+
+    /** string to store the text2 for the game
+     */
     private static final String TEXT2 = "2. Use RIGHT and LEFT button to control the bar";
+
+    /** string to store the text3 for the game
+     */
     private static final String TEXT3 = "3. Press ESC to pause the game";
+
+    /** string to store the text4 for the game
+     */
     private static final String TEXT4 = "4. Click RESTART to restart the level";
+
+    /** string to store the text5 for the game
+     */
     private static final String TEXT5 = "5. Click EXIT to leave the game";
+
+    /** string to store the home button for the game
+     */
     private static final String HOME_TEXT = "HOME";
 
 
-
+    /** for the background colour of the infopage
+     */
     private static final Color BG_COLOR = new Color(0, 0, 0);
+
+    /** for the border colour of the infopage
+     */
     private static final Color BORDER_COLOR = new Color(0, 0, 0);//black
+
+    /** for the dash border colour of the infopage
+     */
     private static final Color DASH_BORDER_COLOR = new  Color(255, 228, 0);//school bus yellow
+
+    /** for the text colour of the infopage
+     */
     private static final Color TEXT_COLOR = new Color(255, 255, 255);//Lemon Yellow
+
+    /** for the button colour of the infopage
+     */
     private static final Color BUTTON_COLOR = new Color(0, 0, 0);
+
+    /** for the button colour when it is clicked in the infopage
+     */
     private static final Color CLICKED_BUTTON_COLOR = new Color(0, 0, 0);
+
+    /** for the text colour when the button is clicked the infopage
+     */
     private static final Color CLICKED_TEXT = Color.BLACK;
+
+    /** for the border size of the infopage
+     */
     private static final int BORDER_SIZE = 5;
+
+    /** for the amount of dash in the infopage
+     */
     private static final float[] DASHES = {12,6};
 
     /* For the Buttons on the Home Page*/
@@ -68,7 +118,10 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     private boolean homeClicked;
 
 
-
+    /** For the dimension and to call
+     * @param owner to call the game frame
+     * @param area the size of the infoPage
+     */
     public InfoPage(GameFrame owner,Dimension area){
 
         this.setFocusable(true);
@@ -103,12 +156,16 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
-
+    /** to draw the 2d in the game
+     * @param g carries the colour for the infopage
+     */
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
     }
 
-
+    /** To design the menu interface
+     * @param g2d the colour for the home menu interface
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -137,6 +194,9 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the button container menu interface
+     * @param g2d the colour for the button
+     */
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
 
@@ -164,6 +224,9 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the menu interface
+     * @param g2d the colour for the text interface
+     */
     private void drawText(Graphics2D g2d){
 
         g2d.setColor(TEXT_COLOR);
@@ -224,6 +287,9 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the button in the game
+     * @param g2d the colour for the button
+     */
     private void drawButton(Graphics2D g2d){
 
         FontRenderContext frc = g2d.getFontRenderContext();
@@ -263,6 +329,9 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         y *=1.2;
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse click a button
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -275,6 +344,9 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse is pressed
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -288,6 +360,9 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         }
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse is release
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if(homeClicked ){
@@ -298,22 +373,33 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         }
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse entered nothing happens
+     */
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse exited nothing happens
+     */
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
 
     }
 
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse is dragged nothing happens
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse move nothing happens
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();

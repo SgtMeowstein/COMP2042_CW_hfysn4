@@ -22,24 +22,34 @@ public class Crack {
     private static final double JUMP_PROBABILITY = 0.7;
 
 //the direction of the crack on the cement brick
+    /** the integer will appear in the brick in the left
+     */
     public static final int LEFT = 10;
+
+    /** the integer will appear in the brick in the right
+     */
     public static final int RIGHT = 20;
+
+    /** the integer will appear in the brick in the up
+     */
     public static final int UP = 30;
+
+    /** the integer will appear in the brick in the down
+     */
     public static final int DOWN = 40;
+
+    /** the integer will appear in the brick in the vertical
+     */
     public static final int VERTICAL = 100;
+
+    /** the integer will appear in the brick in the horizontal
+     */
     public static final int HORIZONTAL = 200;
 
 //variables for the bricks
-    /** to call brick
-     */
+
     private final Brick brick;
-
-    /** create the lines for the crack
-     */
     private GeneralPath crack;
-
-    /** how deep is the crack
-     */
     private int crackDepth;
     private int steps;
 

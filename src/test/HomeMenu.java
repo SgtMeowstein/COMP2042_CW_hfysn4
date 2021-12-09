@@ -26,24 +26,72 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
 
+/** represents the home menu class
+ * @author Siti Khadijah
+ * @version 2.0
+ * @since 1.0
+ */
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener
 {
+    /** string to store the greetings for the game
+     */
     private static final String GREETINGS = "Welcome to:";
+
+    /** string to store the game title for the game
+     */
     private static final String GAME_TITLE = "Brick Destroy Master";
+
+    /** string to store the credits for the game
+     */
     private static final String CREDITS = "Version 2.0";
+
+    /** string to store the start text for the button in the game
+     */
     private static final String START_TEXT = "Start";
+
+    /** string to store the info text for the button in the game
+     */
     private static final String INFO_TEXT = "Instructions";
+
+    /** string to store the exit text for the button in  the game
+     */
     private static final String EXIT_TEXT = "Exit";
 
 
+    /** for the background colour of the home menu
+     */
     private static final Color BG_COLOR = new Color(0, 0, 0);
+
+    /** for the border colour of the home menu
+     */
     private static final Color BORDER_COLOR = new Color(0, 0, 0);//black
+
+    /** for the dash border colour of the home menu
+     */
     private static final Color DASH_BORDER_COLOR = new  Color(255, 228, 0);//school bus yellow
+
+    /** for the text colour of the home menu
+     */
     private static final Color TEXT_COLOR = new Color(255, 255, 255);//Lemon Yellow
+
+    /** for the button colour of the home menu
+     */
     private static final Color BUTTON_COLOR = new Color(0, 0, 0);
+
+    /** for the clicked button colour of the home menu
+     */
     private static final Color CLICKED_BUTTON_COLOR = new Color(0, 0, 0);
+
+    /** for the clicked text colour of the home menu
+     */
     private static final Color CLICKED_TEXT = Color.BLACK;
+
+    /** for the border size of the home menu
+     */
     private static final int BORDER_SIZE = 5;
+
+    /** for the dashes on the border of the home menu
+     */
     private static final float[] DASHES = {12,6};
 
     /* For the Buttons on the Home Page*/
@@ -69,6 +117,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private boolean infoClicked;
 
 
+    /** For the dimension and to call
+     * @param owner to call the game frame
+     * @param area the size of the homeMenu
+     */
     public HomeMenu(GameFrame owner,Dimension area){
 
         this.setFocusable(true);
@@ -103,10 +155,16 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
+    /** to draw the 2d in the game
+     * @param g carries the colour for the menu
+     */
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
     }
 
+    /** To design the menu interface
+     * @param g2d the colour for the menu interface
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -135,6 +193,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the button container menu interface
+     * @param g2d the colour for the button
+     */
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
 
@@ -162,6 +223,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the menu interface
+     * @param g2d the colour for the text interface
+     */
     private void drawText(Graphics2D g2d){
 
         g2d.setColor(TEXT_COLOR);
@@ -195,6 +259,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the button in the game
+     * @param g2d the colour for the button
+     */
     private void drawButton(Graphics2D g2d){
 
         FontRenderContext frc = g2d.getFontRenderContext();
@@ -282,7 +349,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
 
     }
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse click a button
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -298,7 +367,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             System.exit(0);
         }
     }
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse is pressed
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -312,7 +383,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             repaint(exitButton.x,exitButton.y,exitButton.width+1,exitButton.height+1);
         }
     }
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse is release
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if(startClicked ){
@@ -325,11 +398,16 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse entered nothing happens
+     */
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
     }
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse exited nothing happens
+     */
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
 
@@ -340,7 +418,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     public void mouseDragged(MouseEvent mouseEvent) {
 
     }
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse hover over the buttons it will show the hand cusor
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();

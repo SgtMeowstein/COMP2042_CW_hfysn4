@@ -29,10 +29,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+/** represents the GameFrame
+ * @author Siti Khadijah
+ * @version 2.0
+ * @since 1.0
+ */
 public class GameFrame extends JFrame implements WindowFocusListener {
 
+    /** string represents the title
+     */
     private static final String DEF_TITLE = "Brick Destroy";
     private final InfoPage infoPage;
+
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
@@ -45,6 +53,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private boolean gaming;
 
+    /**the method to call the other methods
+     */
     public GameFrame(){
         super();
 
@@ -70,9 +80,19 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
 
     }
+
+    /** this method will get the score
+     * @return  it will return the player_score
+     */
     public int getScore(){return player_score;}
+
+    /** this method will display the score in the game
+     * @param score player score in the game
+     */
     public void setScore(int score){this.player_score = score;}
 
+    /** to initialize the control of the mouse
+     */
     public void initialize(){
         this.setTitle(DEF_TITLE);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -81,6 +101,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setVisible(true);
     }
 
+    /** this is to transition from home to the game
+     */
     public void enableGameBoard(){
         this.dispose();
         this.remove(homeMenu);
@@ -91,6 +113,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
+    /** this is to transition from home to the info page
+     */
     public void enableInfoScreen(){
         this.dispose();
         this.remove(homeMenu);
@@ -101,6 +126,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
+    /** this is to transition from game to the game over page
+     */
     public void enableGameOver(){
         ReadFile();
         this.dispose();
@@ -112,6 +140,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
+    /** this is to transition from game to the home page
+     * @param from to give them numbers to call back
+     */
     public void enableHomeMenu(int from){
         if(from==1) {
             this.dispose();
@@ -152,6 +184,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
 
+    /** this is to transition from game over page to the game page
+     */
     public void enableretry(){
         this.dispose();
         this.remove(gameOver);
@@ -163,6 +197,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
 
+    /** this is to transition from game over page to the leaderboard page
+     */
     public void enableleaderboard(){
         ReadFile();
         this.dispose();
@@ -174,9 +210,20 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
+    /** to get the score after the game
+     * @return it will fetch the score
+     */
     public int[] getplayerscore(){return score;}
+
+
+    /** to get the name of the player after the game
+     * @return it will fetch the name
+     */
     public String[] getplayeruser(){return user;}
 
+    /** to read the file for the leaderscore and username
+     */
     public void ReadFile(){
         try{
             File leaderboard = new File("src/leaderboard.txt");
@@ -198,6 +245,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         }
     }
 
+    /** to write in the file
+     * @param score the array to store the score
+     * @param name the array to store the name
+     */
     public void WriteFile(int[] score, String[] name){
         try {
             System.out.println("Save Succeeded");
@@ -219,6 +270,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
             e.printStackTrace();
         }
     }
+
+    /** to position the window
+     */
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (size.width - this.getWidth()) / 2;
@@ -227,6 +281,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     }
 
 
+    /** when the user is in the game it will start
+     * @param windowEvent the user is in the game
+     */
     @Override
     public void windowGainedFocus(WindowEvent windowEvent) {
         /*
@@ -240,6 +297,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gaming = true;
     }
 
+    /** when the user is out of the game
+     * @param windowEvent when the cursor or the player is not in the game
+     */
     @Override
     public void windowLostFocus(WindowEvent windowEvent) {
         if(gaming)

@@ -25,31 +25,74 @@ import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
+/** represents the GameOver class
+ * @author Siti Khadijah
+ * @version 2.0
+ * @since 1.0
+ */
 
 public class GameOver extends JComponent implements MouseListener, MouseMotionListener
 {
+    /** string to store the header for the game
+     */
     private static final String HEADER = "GAME OVER";
     private String SCORE;
     private String[] user;
     private int[] score;
     private String username;
     private int player_score;
+    /** string to store the retry text for the game over page
+     */
     private static final String RETRY_TEXT = "RETRY";
+
+    /** string to store the home text for the game over page
+     */
     private static final String HOME_TEXT = "HOME";
+
+    /** string to store the leaderboard text for the game over page
+     */
     private static final String LEADERBOARD_TEXT = "BOARD";
+
+    /** string to store the save text for the game over page
+     */
     private static final String SAVE_TEXT = "SAVE";
 
 
 
-
+    /** for the background colour of the GameOver
+     */
     private static final Color BG_COLOR = new Color(0, 0, 0);
+
+    /** for the border colour of the GameOver
+     */
     private static final Color BORDER_COLOR = new Color(0, 0, 0);//black
+
+    /** for the dash border colour of the GameOver
+     */
     private static final Color DASH_BORDER_COLOR = new  Color(255, 228, 0);//school bus yellow
+
+    /** for the text colour of the GameOver
+     */
     private static final Color TEXT_COLOR = new Color(255, 255, 255);//Lemon Yellow
+
+    /** for the button colour of the GameOver
+     */
     private static final Color BUTTON_COLOR = new Color(0, 0, 0);
+
+    /** for the clicked button colour of the GameOver
+     */
     private static final Color CLICKED_BUTTON_COLOR = new Color(0, 0, 0);
+
+    /** for the clicked colour of the GameOver
+     */
     private static final Color CLICKED_TEXT = Color.BLACK;
+
+    /** for the border size of the GameOver
+     */
     private static final int BORDER_SIZE = 5;
+
+    /** for the dash on the border of the GameOver
+     */
     private static final float[] DASHES = {12,6};
 
     /* For the Buttons on the Home Page*/
@@ -75,8 +118,10 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
     private boolean saveClicked;
 
 
-
-
+    /** For the dimension and to call
+     * @param owner to call the game frame
+     * @param area the size of the gameover
+     */
     public GameOver(GameFrame owner,Dimension area){
 
         this.setFocusable(true);
@@ -113,7 +158,9 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
-
+    /** to draw the 2d in the game
+     * @param g carries the colour for the GameOver
+     */
     public void paint(Graphics g){
 
         SCORE = String.format("%d", player_score=owner.getScore());
@@ -121,7 +168,9 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
-
+    /** To design the menu interface
+     * @param g2d the colour for the home menu interface
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -150,6 +199,9 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the button container menu interface
+     * @param g2d the colour for the button
+     */
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
 
@@ -171,6 +223,9 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the menu interface
+     * @param g2d the colour for the text interface
+     */
     private void drawText(Graphics2D g2d){
 
         g2d.setColor(TEXT_COLOR);
@@ -195,6 +250,9 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** To design the button in the game
+     * @param g2d the colour for the button
+     */
     private void drawButton(Graphics2D g2d){
 
         FontRenderContext frc = g2d.getFontRenderContext();
@@ -309,6 +367,9 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse click a button
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -351,32 +412,49 @@ public class GameOver extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse is pressed
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse is release
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse entered nothing happens
+     */
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse exited nothing happens
+     */
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
 
     }
 
-
+    /** when the mouse move
+     * @param mouseEvent when the mouse is dragged nothing happens
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
 
     }
 
+    /** when the mouse move
+     * @param mouseEvent when the mouse move nothing happens
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();

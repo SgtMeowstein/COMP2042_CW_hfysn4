@@ -40,7 +40,8 @@ public class DebugConsole extends JDialog implements WindowListener{
      */
     private JFrame owner;
 
-    /** the variable for the DebugPanel
+
+    /** the variable for the debugpanel
      */
     private DebugPanel debugPanel;
 

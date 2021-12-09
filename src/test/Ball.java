@@ -12,10 +12,7 @@ import java.awt.geom.RectangularShape;
  */
 abstract public class Ball {
 
-//variable for the ball shape
-    /** Represents the ball shape
-     *
-     */
+
     private Shape ballFace;
 
 
@@ -29,18 +26,11 @@ abstract public class Ball {
     Point2D left;
     Point2D right;
 
-//variable for the ball colour
-    /** Represents the colour of the ball
-     * @param border The border colour of the ball
-     * @param inner The inner colour of the ball
-     */
+
     private Color border;
     private Color inner;
 
-//variable for the speed of the ball
-    /** Represents the speed of the ball
-     * @param speedX The speed of the ball moving horizontal
-     */
+
     private int speedX;
 
     /** Represents the speed of the ball
@@ -51,9 +41,9 @@ abstract public class Ball {
     //method for the ball position on the player
 
     /**
-     * @param center The direction of the ball
-     * @param radiusA The radius of the ball
-     * @param radiusB The radius of the ball
+     * @param center The position of the ball
+     * @param radiusA The horizontal radius of the ball
+     * @param radiusB The vertical radius of the ball
      * @param inner  The inner colour of the ball
      * @param border The border colour of the ball
      */
@@ -83,12 +73,10 @@ abstract public class Ball {
      * @param center The direction of the ball
      * @param radiusA The radius of the ball
      * @param radiusB The radius of the ball
-     * @return
      */
     protected abstract Shape makeBall(Point2D center,int radiusA,int radiusB);
 
     /** Represents the movement of the ball
-     *
      */
 //method to make the ball move
     public void move(){
